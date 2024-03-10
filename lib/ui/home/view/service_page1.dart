@@ -54,7 +54,7 @@ class _ServicePageState extends State<ServicePage> {
                         image: DecorationImage(
                           image: AssetImage(
                               "assets/images/services/${widget.service.key}.png"),
-                          fit: BoxFit.cover,
+                          fit: BoxFit.fill,
                         ),
                       ),
                       child: Stack(
@@ -139,22 +139,28 @@ class _ServicePageState extends State<ServicePage> {
                             ),
                           ),
                           SizedBox(
-                            width: 0.35.sw,
+                            width: 0.15.sw,
                             child: Wrap(
-                              alignment: WrapAlignment.spaceEvenly,
-                              spacing: 20,
-                              runSpacing: 20,
+                              alignment: WrapAlignment.spaceBetween,
+                              spacing: 10,
+                              runSpacing: 10,
                               children: [
                                 for (int i = 1;
                                     i <= widget.service.imagesCount;
                                     i++)
-                                  Image.asset(
-                                    'assets/images/serviceimages/${widget.service.key}$i.png',
-                                    height: 0.25.sh,
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.circular(0.10.sw),
+                                    ),
+                                    child: Image.asset(
+                                      'assets/images/serviceimages/${widget.service.key}$i.png',
+                                      height: 0.25.sh,
+                                    ),
                                   ),
                               ],
                             ),
-                          ),
+                          )
                         ],
                       ),
                     ),

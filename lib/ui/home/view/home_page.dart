@@ -289,14 +289,13 @@ class AboutUS extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          SizedBox(height: 0.1.sh),
           SizedBox(
-            width: 0.8.sw,
+            width: 1.sw,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Image.asset(
-                  height: 0.3.sh,
+                  height: 0.5.sh,
                   width: 0.28.sw,
 
                   // width: 200,
