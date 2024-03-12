@@ -149,7 +149,7 @@ class ContactUS extends StatelessWidget {
           ), */
           Image.asset(
             height: 0.2.sh,
-            // width: 200,
+            width: 5.sh,
             'assets/images/logo.png',
           ),
           const SizedBox(height: 40),

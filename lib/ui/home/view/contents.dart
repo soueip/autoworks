@@ -32,7 +32,6 @@ class ServiceFeatureModel {
 }
 
 List<String> services = [
-  'Select Service',
   'Paint Protection Flim (PPF)',
   'Peelable Paint',
   'Window Flims',
@@ -713,7 +712,12 @@ class _ContentsPageState extends State<ContentsPage> {
                   ),
                   Container(
                     width: constants.isLaptop ? 0.16.sw : 0.8.sw,
-                    decoration: const BoxDecoration(color: Colors.white),
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(5.0),
+                      border: Border.all(color: Colors.grey),
+                    ),
                     child: InternationalPhoneNumberInput(
                       selectorConfig: const SelectorConfig(
                         selectorType: PhoneInputSelectorType.DROPDOWN,
@@ -723,145 +727,83 @@ class _ContentsPageState extends State<ContentsPage> {
                       hintText: "WhatsApp No",
                       initialValue: PhoneNumber(isoCode: "QA"),
                       onInputChanged: (PhoneNumber value) {},
+                      inputDecoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "WhatsApp No",
+                        hintStyle: TextStyle(color: Colors.grey),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+                      ),
+                      textStyle: const TextStyle(color: Colors.black),
+                      autoValidateMode: AutovalidateMode.onUserInteraction,
+                      formatInput: false,
+                      keyboardType: const TextInputType.numberWithOptions(
+                          signed: true, decimal: true),
                     ),
                   ),
-                  /* SizedBox(
-                    width: 0.15.sw,
-                    child: TextField(
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: 'Enter Whatsapp No',
-                        hintStyle: const TextStyle(
-                          color: Colors.black,
-                        ),
-                        labelStyle: const TextStyle(
-                          color: Colors.black,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        errorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide:
-                              const BorderSide(color: Colors.transparent),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide:
-                              const BorderSide(color: Colors.transparent),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: Colors.transparent),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        disabledBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: Colors.transparent),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        focusedErrorBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: Colors.transparent),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                      ),
-                    ),
-                  ), */
-                  // if (constants.isLaptop)
                   SizedBox(
                     width: constants.isLaptop ? 0.4.sw : 0.8.sw,
-                    height: constants.isLaptop ? 0.37.sh : null,
-                    child: Column(children: [
-                      const Text(
-                        "Select Service",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 25,
-                        ),
-                      ),
-                      const SizedBox(height: 90),
-                      Row(
+                    height: constants.isLaptop ? 0.4.sh : null,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          const SizedBox(height: 50),
-                          Container(
-                            width: constants.isLaptop ? 0.16.sw : 0.8.sw,
-                            decoration: BoxDecoration(color: Colors.white),
-                            child: DropdownButton<String>(
-                              value: selectedService,
-                              hint: Text('Select Service'),
-                              items: services.map((service) {
-                                return DropdownMenuItem<String>(
-                                  value: service,
-                                  child: Text(service),
-                                );
-                              }).toList(),
-                              onChanged: (String? value) {
-                                setState(() {
-                                  selectedService = value;
-                                });
-                              },
-                            ),
-                          ),
-                          const SizedBox(width: 20),
-                          ElevatedButton(
-                            onPressed: () {
-                              // Add your logic for the "Add" button
-                              print("Add button pressed!");
-                            },
-                            child: Text("Add"),
-                          ),
-                        ],
-                      )
-                    ]),
-                  ),
-
-                  /* else
-                    SizedBox(
-                      width: constants.isLaptop ? null : 0.8.sw,
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 25,
-                            vertical: 2,
-                          ),
-                          child: DropdownButton(
-                            value: selectedService,
-                            style: const TextStyle(color: Colors.black),
-                            dropdownColor: Colors.white,
-                            underline: const SizedBox(),
-                            iconEnabledColor: Colors.black,
-                            isExpanded: !constants.isLaptop,
-                            hint: Text(
-                              'Select Service',
-                              style: GoogleFonts.questrial(color: Colors.black),
-                            ),
-                            items: services
-                                .map(
-                                  (e) => DropdownMenuItem(
-                                    value: e,
-                                    child: Text(
-                                      e,
-                                      style: GoogleFonts.questrial(
-                                          color: Colors.black),
+                          SizedBox(
+                            child: Center(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width:
+                                        constants.isLaptop ? 0.16.sw : 0.8.sw,
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10.0),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      border: Border.all(color: Colors.grey),
+                                    ),
+                                    child: DropdownButtonHideUnderline(
+                                      child: DropdownButton<String>(
+                                        value: selectedService,
+                                        hint: const Text(
+                                          'Select Service',
+                                          style: TextStyle(color: Colors.grey),
+                                        ),
+                                        icon: const Icon(Icons.arrow_drop_down),
+                                        iconSize:
+                                            24.0, // Set dropdown icon size
+                                        elevation: 16,
+                                        style: const TextStyle(
+                                            color: Colors
+                                                .black), // Style the selected item text
+                                        onChanged: (String? value) {
+                                          setState(() {
+                                            selectedService = value;
+                                          });
+                                        },
+                                        items: services.map((service) {
+                                          return DropdownMenuItem<String>(
+                                            value: service,
+                                            child: Text(service),
+                                          );
+                                        }).toList(),
+                                      ),
                                     ),
                                   ),
-                                )
-                                .toList(),
-                            onChanged: (value) {
-                              setState(() {
-                                selectedService = value;
-                              });
-                            },
+                                  const SizedBox(width: 30),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      print("Add button pressed!");
+                                    },
+                                    child: const Text("Add"),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    ), */
+                        ]),
+                  ),
                   SizedBox(
                     // width: 0.15.sw,
                     height: 50,

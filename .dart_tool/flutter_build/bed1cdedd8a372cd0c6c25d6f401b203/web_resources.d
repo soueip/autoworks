@@ -1,0 +1,1 @@
+ build\\web\\favicon.png build\\web\\index.html build\\web\\manifest.json:  C:\\Users\\NOVA\\Desktop\\Autoworks\\web\\favicon.png C:\\Users\\NOVA\\Desktop\\Autoworks\\web\\index.html C:\\Users\\NOVA\\Desktop\\Autoworks\\web\\manifest.json
