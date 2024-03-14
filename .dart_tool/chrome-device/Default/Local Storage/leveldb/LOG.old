@@ -1,4 +1,6 @@
-2024/03/12-12:05:54.224 4cac Reusing MANIFEST C:\Users\NOVA\AppData\Local\Temp\flutter_tools.ec0c946a\flutter_tools_chrome_device.1fe7d06a\Default\Local Storage\leveldb/MANIFEST-000001
-2024/03/12-12:05:54.225 4cac Recovering log #4
-2024/03/12-12:05:54.227 4cac Reusing old log C:\Users\NOVA\AppData\Local\Temp\flutter_tools.ec0c946a\flutter_tools_chrome_device.1fe7d06a\Default\Local Storage\leveldb/000004.log 
-2024/03/12-12:05:54.227 4cac Delete type=0 #3
+2024/03/14-12:27:43.746 2068 Reusing MANIFEST C:\Users\NOVA\AppData\Local\Temp\flutter_tools.61d22aa2\flutter_tools_chrome_device.89420d9c\Default\Local Storage\leveldb/MANIFEST-000001
+2024/03/14-12:27:43.748 2068 Recovering log #4
+2024/03/14-12:27:43.748 2068 Level-0 table #7: started
+2024/03/14-12:27:43.754 2068 Level-0 table #7: 48668 bytes OK
+2024/03/14-12:27:43.760 2068 Delete type=0 #3
+2024/03/14-12:27:43.760 2068 Delete type=0 #4

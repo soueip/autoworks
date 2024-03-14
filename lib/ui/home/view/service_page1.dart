@@ -172,7 +172,7 @@ class _ServicePageState extends State<ServicePage> {
                                           12.0), // Clip the image to match the container's border radius
                                       child: Image.asset(
                                         'assets/images/serviceimages/${widget.service.key}$i.png',
-                                        height: 0.60.sh,
+                                        height: 0.70.sh,
                                         width: 0.65.sh,
                                         fit: BoxFit.fill,
                                       ),

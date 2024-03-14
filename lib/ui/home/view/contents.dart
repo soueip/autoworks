@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:autoworks/ui/home/widget/star.dart';
 import 'package:fluttericon/linearicons_free_icons.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
@@ -350,6 +351,7 @@ class _ContentsPageState extends State<ContentsPage> {
   String? selectedService;
   @override
   Widget build(BuildContext context) {
+    Set<String> selectedServices = {};
     constants.screenHeight = MediaQuery.of(context).size.height;
     constants.screenWidth = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
@@ -463,7 +465,7 @@ class _ContentsPageState extends State<ContentsPage> {
                                     for (var i = 0; i < 3; i++)
                                       Container(
                                         alignment: Alignment.center,
-                                        height: 0.40.sh,
+                                        height: 0.45.sh,
                                         width: constants.isLaptop
                                             ? 0.25.sw
                                             : 0.9.sw,
@@ -507,16 +509,6 @@ class _ContentsPageState extends State<ContentsPage> {
                                               const SizedBox(
                                                 height: 12,
                                               ),
-                                              /*  Container(
-                                                padding: const EdgeInsets.all(5),
-                                                color: Colors.black,
-                                                child: const Text(
-                                                  'Read More',
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                              ), */
                                             ],
                                           ),
                                         ),
@@ -642,33 +634,15 @@ class _ContentsPageState extends State<ContentsPage> {
               borderRadius: BorderRadius.circular(5.0),
               color: const Color(0xff333333),
             ),
-            // padding: EdgeInsets.symmetric(vertical: 0.1.sh),
             child: Center(
-              child: Wrap(
-                alignment: WrapAlignment.spaceEvenly,
-                runAlignment: WrapAlignment.spaceEvenly,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                runSpacing: !constants.isLaptop ? 0.07.sh : 10,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment
+                    .spaceAround, // Align children vertically centered
                 children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Image.asset(
-                        "assets/images/whatsapp.png",
-                        height: 30,
-                      ),
-                      const Text(
-                        'GET IN TOUCH',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 26,
-                        ),
-                      ),
-                    ],
-                  ),
+                  const ContactHeader(),
                   SizedBox(
-                    width: constants.isLaptop ? 0.15.sw : 0.8.sw,
-                    child: TextField(
+                    width: constants.isLaptop ? 0.16.sw : 0.8.sw,
+                    child: TextFormField(
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
@@ -684,135 +658,144 @@ class _ContentsPageState extends State<ContentsPage> {
                         ),
                         errorBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
-                          borderSide:
-                              const BorderSide(color: Colors.transparent),
+                          borderSide: BorderSide.none,
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5),
-                          borderSide:
-                              const BorderSide(color: Colors.transparent),
+                          borderSide: BorderSide.none,
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: Colors.transparent),
+                          borderSide: BorderSide.none,
                           borderRadius: BorderRadius.circular(5),
                         ),
                         disabledBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: Colors.transparent),
+                          borderSide: BorderSide.none,
                           borderRadius: BorderRadius.circular(5),
                         ),
                         focusedErrorBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: Colors.transparent),
+                          borderSide: BorderSide.none,
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: constants.isLaptop ? 0.16.sw : 0.8.sw,
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5.0),
-                      border: Border.all(color: Colors.grey),
-                    ),
-                    child: InternationalPhoneNumberInput(
-                      selectorConfig: const SelectorConfig(
-                        selectorType: PhoneInputSelectorType.DROPDOWN,
-                        showFlags: false,
-                        setSelectorButtonAsPrefixIcon: true,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5.0),
+                        border: Border.all(color: Colors.grey),
                       ),
-                      hintText: "WhatsApp No",
-                      initialValue: PhoneNumber(isoCode: "QA"),
-                      onInputChanged: (PhoneNumber value) {},
-                      inputDecoration: const InputDecoration(
-                        border: InputBorder.none,
+                      child: InternationalPhoneNumberInput(
+                        selectorConfig: const SelectorConfig(
+                          selectorType: PhoneInputSelectorType.DROPDOWN,
+                          showFlags: false,
+                          setSelectorButtonAsPrefixIcon: true,
+                        ),
                         hintText: "WhatsApp No",
-                        hintStyle: TextStyle(color: Colors.grey),
-                        contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+                        initialValue: PhoneNumber(isoCode: "QA"),
+                        onInputChanged: (PhoneNumber value) {},
+                        inputDecoration: const InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "WhatsApp No",
+                          hintStyle: TextStyle(color: Colors.grey),
+                          contentPadding:
+                              EdgeInsets.symmetric(horizontal: 10.0),
+                        ),
+                        textStyle: const TextStyle(color: Colors.black),
+                        autoValidateMode: AutovalidateMode.onUserInteraction,
+                        formatInput: false,
+                        keyboardType: const TextInputType.numberWithOptions(
+                          signed: true,
+                          decimal: true,
+                        ),
                       ),
-                      textStyle: const TextStyle(color: Colors.black),
-                      autoValidateMode: AutovalidateMode.onUserInteraction,
-                      formatInput: false,
-                      keyboardType: const TextInputType.numberWithOptions(
-                          signed: true, decimal: true),
                     ),
                   ),
-                  SizedBox(
-                    width: constants.isLaptop ? 0.4.sw : 0.8.sw,
-                    height: constants.isLaptop ? 0.4.sh : null,
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            child: Center(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width:
-                                        constants.isLaptop ? 0.16.sw : 0.8.sw,
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10.0),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(5.0),
-                                      border: Border.all(color: Colors.grey),
-                                    ),
-                                    child: DropdownButtonHideUnderline(
-                                      child: DropdownButton<String>(
-                                        value: selectedService,
-                                        hint: const Text(
-                                          'Select Service',
-                                          style: TextStyle(color: Colors.grey),
-                                        ),
-                                        icon: const Icon(Icons.arrow_drop_down),
-                                        iconSize:
-                                            24.0, // Set dropdown icon size
-                                        elevation: 16,
-                                        style: const TextStyle(
-                                            color: Colors
-                                                .black), // Style the selected item text
-                                        onChanged: (String? value) {
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(10), // round corners
+                      ),
+                      padding: const EdgeInsets.all(25),
+                      textStyle: const TextStyle(
+                        color: AppColors.red,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    child: const Text('Select Service'),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text('Select Service'),
+                            content: StatefulBuilder(
+                              builder:
+                                  (BuildContext context, StateSetter setState) {
+                                return SizedBox(
+                                  width: constants.isLaptop ? 0.16.sw : 0.8.sw,
+                                  height: 0.265.sw,
+                                  child: ListView(
+                                    children: services.map((service) {
+                                      return CheckboxListTile(
+                                        title: Text(service),
+                                        value:
+                                            selectedServices.contains(service),
+                                        onChanged: (bool? value) {
                                           setState(() {
-                                            selectedService = value;
+                                            if (value == true) {
+                                              selectedServices.add(service);
+                                            } else {
+                                              selectedServices.remove(service);
+                                            }
                                           });
                                         },
-                                        items: services.map((service) {
-                                          return DropdownMenuItem<String>(
-                                            value: service,
-                                            child: Text(service),
-                                          );
-                                        }).toList(),
-                                      ),
+                                      );
+                                    }).toList(),
+                                  ),
+                                );
+                              },
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 12, horizontal: 24),
+                                  decoration: BoxDecoration(
+                                    color: Colors.black,
+                                    borderRadius: BorderRadius.circular(22),
+                                  ),
+                                  child: const Text(
+                                    'OK',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
                                     ),
                                   ),
-                                  const SizedBox(width: 30),
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      print("Add button pressed!");
-                                    },
-                                    child: const Text("Add"),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ]),
+                                ),
+                              )
+                            ],
+                          );
+                        },
+                      );
+                    },
                   ),
                   SizedBox(
-                    // width: 0.15.sw,
                     height: 50,
                     child: Center(
                       child: InkWell(
                         onTap: () {},
                         child: SizedBox(
                           width: constants.isLaptop ? 0.08.sw : 0.8.sw,
-                          // height: 50,
                           child: DecoratedBox(
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -839,6 +822,7 @@ class _ContentsPageState extends State<ContentsPage> {
               ),
             ),
           ),
+
           /*     Container(
             height: 0.70.sh,
             width: 1.sw,
