@@ -1,10 +1,13 @@
-2024/03/11-12:53:01.320 d94 Reusing MANIFEST C:\Users\NOVA\AppData\Local\Temp\flutter_tools.6115552e\flutter_tools_chrome_device.3f388c52\Default\shared_proto_db/MANIFEST-000001
-2024/03/11-12:53:01.320 d94 Recovering log #13
-2024/03/11-12:53:01.322 d94 Reusing old log C:\Users\NOVA\AppData\Local\Temp\flutter_tools.6115552e\flutter_tools_chrome_device.3f388c52\Default\shared_proto_db/000013.log 
-2024/03/11-12:53:01.322 d94 Delete type=0 #3
-2024/03/11-12:53:01.322 d94 Delete type=0 #4
-2024/03/11-12:53:01.322 d94 Delete type=0 #7
-2024/03/11-12:53:01.322 d94 Delete type=0 #10
-2024/03/11-12:53:16.276 3ea8 Level-0 table #17: started
-2024/03/11-12:53:16.284 3ea8 Level-0 table #17: 134001 bytes OK
-2024/03/11-12:53:16.286 3ea8 Delete type=0 #13
+2024/03/12-12:05:54.275 388c Reusing MANIFEST C:\Users\NOVA\AppData\Local\Temp\flutter_tools.ec0c946a\flutter_tools_chrome_device.1fe7d06a\Default\shared_proto_db/MANIFEST-000001
+2024/03/12-12:05:54.275 388c Recovering log #19
+2024/03/12-12:05:54.276 388c Reusing old log C:\Users\NOVA\AppData\Local\Temp\flutter_tools.ec0c946a\flutter_tools_chrome_device.1fe7d06a\Default\shared_proto_db/000019.log 
+2024/03/12-12:05:54.277 388c Delete type=0 #3
+2024/03/12-12:05:54.277 388c Delete type=0 #4
+2024/03/12-12:05:54.277 388c Delete type=0 #7
+2024/03/12-12:05:54.277 388c Delete type=2 #8
+2024/03/12-12:05:54.277 388c Delete type=0 #10
+2024/03/12-12:05:54.277 388c Delete type=2 #11
+2024/03/12-12:05:54.277 388c Delete type=0 #13
+2024/03/12-12:05:54.277 388c Delete type=2 #14
+2024/03/12-12:05:54.277 388c Delete type=0 #16
+2024/03/12-12:05:54.277 388c Delete type=2 #17

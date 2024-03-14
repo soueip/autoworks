@@ -138,26 +138,49 @@ class _ServicePageState extends State<ServicePage> {
                               ],
                             ),
                           ),
-                          SizedBox(
-                            width: 0.15.sw,
-                            child: Wrap(
-                              alignment: WrapAlignment.spaceBetween,
-                              spacing: 10,
-                              runSpacing: 10,
+                          Container(
+                            padding: const EdgeInsets.all(
+                                8.0), // Add padding around the container
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 for (int i = 1;
                                     i <= widget.service.imagesCount;
                                     i++)
                                   Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal:
+                                            4.0), // Add horizontal margin around each image container
                                     decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.circular(0.10.sw),
+                                      borderRadius: BorderRadius.circular(
+                                          12.0), // Increase border radius for a smoother look
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: const Color.fromARGB(
+                                                  125, 158, 158, 158)
+                                              .withOpacity(
+                                                  0.3), // Add shadow for depth
+                                          spreadRadius: 1,
+                                          blurRadius: 3,
+                                          offset: const Offset(0,
+                                              2), // Offset the shadow slightly
+                                        ),
+                                      ],
                                     ),
-                                    child: Image.asset(
-                                      'assets/images/serviceimages/${widget.service.key}$i.png',
-                                      height: 0.25.sh,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(
+                                          12.0), // Clip the image to match the container's border radius
+                                      child: Image.asset(
+                                        'assets/images/serviceimages/${widget.service.key}$i.png',
+                                        height: 0.60.sh,
+                                        width: 0.65.sh,
+                                        fit: BoxFit.fill,
+                                      ),
                                     ),
                                   ),
+                                const SizedBox(
+                                    width:
+                                        8.0), // Add SizedBox for spacing between images
                               ],
                             ),
                           )

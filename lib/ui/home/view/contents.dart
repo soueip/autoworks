@@ -48,7 +48,7 @@ List<SeriviceModel> servicesModel = [
     title: 'Paint Protection Flim (PPF)',
     description:
         "A paint protection film is to keep the top coat of your car looking brand new for a longer time. It can also protect your vehicle from acid rain, the extreme heat of the sun and other chemicals",
-    imagesCount: 3,
+    imagesCount: 1,
     key: "ppf",
     features: [
       ServiceFeatureModel(
@@ -87,7 +87,7 @@ List<SeriviceModel> servicesModel = [
     title: 'Peelable Paint',
     description:
         "It helps you remove the new paint like a vinyl wrap without giving it the look of one. As natural and superb as it looks, you can have a new car with every shade you can imagine. We add our professional touch to finish each peelable painting process with perfectionism within each surface.",
-    imagesCount: 2,
+    imagesCount: 1,
     key: 'pp',
     features: [
       ServiceFeatureModel(
@@ -121,7 +121,7 @@ List<SeriviceModel> servicesModel = [
     title: 'Window Flims',
     description:
         "Darkening your vehicle's windows is the process of applying laminate films to each required window. It makes them less absorbing to UV rays and heat and presents the riders with their privacy on the road. We perform this service by applying adhesive solar sheets without the need to remove the windows in the process.",
-    imagesCount: 2,
+    imagesCount: 1,
     key: 'wf',
     features: [
       ServiceFeatureModel(
@@ -155,7 +155,7 @@ List<SeriviceModel> servicesModel = [
     title: 'Nano Ceramic Coating',
     description:
         "Nano ceramic coating is a liquid polymer applied to the exterior surfaces of a vehicle. The hard 10h top and softer 7h base layer offer improved swirl resistance over regular 9h paint protection coatings. It chemically bonds with the factory paint, creating a protective layer which gives a high gloss and hydrophobic nature",
-    imagesCount: 2,
+    imagesCount: 1,
     key: 'nc',
     features: [
       ServiceFeatureModel(
@@ -194,7 +194,7 @@ List<SeriviceModel> servicesModel = [
     title: 'Vinyl Wrapping',
     description:
         "Involves applying a thin, adhesive vinyl film to the exterior of a vehicle. This method allows for a change in the vehicle's appearance without affecting the original paint.",
-    imagesCount: 2,
+    imagesCount: 1,
     key: 'vw',
     features: [
       ServiceFeatureModel(
@@ -228,7 +228,7 @@ List<SeriviceModel> servicesModel = [
     title: 'PDR Smart Repairs',
     description:
         "A method used to remove minor dents and dings from the body of a vehicle without the need for traditional bodywork and painting. It is most effective for smaller dents without significant damage to the paint or underlying metal.",
-    imagesCount: 3,
+    imagesCount: 1,
     key: 'pdr',
     features: [
       ServiceFeatureModel(
@@ -281,7 +281,7 @@ List<SeriviceModel> servicesModel = [
     title: 'Leather Care',
     description:
         "Leather care for cars is a proactive and essential practice that not only enhances the appearance of the interior but also contributes to the comfort and long-term durability of the leather upholstery.",
-    imagesCount: 3,
+    imagesCount: 1,
     key: 'lc',
     features: [
       ServiceFeatureModel(
@@ -310,7 +310,7 @@ List<SeriviceModel> servicesModel = [
     title: 'Detailing',
     description:
         "A comprehensive and meticulous process of cleaning, restoring, and protecting a vehicle, both inside and out, to achieve a like- new appearance. Professional detailers use specialized tools, equipment, and products to address various aspects of a car's aesthetics and functionality. Car detailing typically includes both interior and exterior treatments.",
-    imagesCount: 3,
+    imagesCount: 1,
     key: 'dt',
     features: [
       ServiceFeatureModel(
