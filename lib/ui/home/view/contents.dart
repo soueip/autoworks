@@ -352,8 +352,7 @@ class _ContentsPageState extends State<ContentsPage> {
   @override
   Widget build(BuildContext context) {
     Set<String> selectedServices = {};
-    constants.screenHeight = MediaQuery.of(context).size.height;
-    constants.screenWidth = MediaQuery.of(context).size.width;
+
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -362,7 +361,11 @@ class _ContentsPageState extends State<ContentsPage> {
               Column(
                 children: [
                   Container(
-                    height: 0.8.sh,
+                    height: constants.isLaptop
+                        ? 0.8.sh
+                        : constants.isMobile
+                            ? 0.3.sh
+                            : 0.5.sh,
                     width: 1.sw,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
@@ -370,51 +373,6 @@ class _ContentsPageState extends State<ContentsPage> {
                         fit: BoxFit.cover,
                       ),
                     ),
-                    /*      child: Padding(
-                      padding: EdgeInsets.only(left: 0.05.sw),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            'Protection Film With',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 2,
-                          ),
-                          const Text(
-                            'Nano Ceramic Coating.',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 2,
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
-                              color: AppColors.red,
-                            ),
-                            child: const Text(
-                              'Explore More >',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 15),
-                            ),
-                          ),
-                          // const Spacer(),
-                        ],
-                      ),
-                    ),
-                */
                   ),
                   Container(
                     height: constants.isLaptop ? 0.72.sh : 1.8.sh,
@@ -635,280 +593,403 @@ class _ContentsPageState extends State<ContentsPage> {
               color: const Color(0xff333333),
             ),
             child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment
-                    .spaceAround, // Align children vertically centered
-                children: [
-                  const ContactHeader(),
-                  SizedBox(
-                    width: constants.isLaptop ? 0.16.sw : 0.8.sw,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: 'Name',
-                        hintStyle: const TextStyle(
-                          color: Colors.black,
-                        ),
-                        labelStyle: const TextStyle(
-                          color: Colors.black,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        errorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide.none,
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide.none,
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        disabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        focusedErrorBorder: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: constants.isLaptop ? 0.16.sw : 0.8.sw,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(5.0),
-                        border: Border.all(color: Colors.grey),
-                      ),
-                      child: InternationalPhoneNumberInput(
-                        selectorConfig: const SelectorConfig(
-                          selectorType: PhoneInputSelectorType.DROPDOWN,
-                          showFlags: false,
-                          setSelectorButtonAsPrefixIcon: true,
-                        ),
-                        hintText: "WhatsApp No",
-                        initialValue: PhoneNumber(isoCode: "QA"),
-                        onInputChanged: (PhoneNumber value) {},
-                        inputDecoration: const InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "WhatsApp No",
-                          hintStyle: TextStyle(color: Colors.grey),
-                          contentPadding:
-                              EdgeInsets.symmetric(horizontal: 10.0),
-                        ),
-                        textStyle: const TextStyle(color: Colors.black),
-                        autoValidateMode: AutovalidateMode.onUserInteraction,
-                        formatInput: false,
-                        keyboardType: const TextInputType.numberWithOptions(
-                          signed: true,
-                          decimal: true,
-                        ),
-                      ),
-                    ),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(10), // round corners
-                      ),
-                      padding: const EdgeInsets.all(25),
-                      textStyle: const TextStyle(
-                        color: AppColors.red,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                    child: const Text('Select Service'),
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: const Text('Select Service'),
-                            content: StatefulBuilder(
-                              builder:
-                                  (BuildContext context, StateSetter setState) {
-                                return SizedBox(
-                                  width: constants.isLaptop ? 0.16.sw : 0.8.sw,
-                                  height: 0.265.sw,
-                                  child: ListView(
-                                    children: services.map((service) {
-                                      return CheckboxListTile(
-                                        title: Text(service),
-                                        value:
-                                            selectedServices.contains(service),
-                                        onChanged: (bool? value) {
-                                          setState(() {
-                                            if (value == true) {
-                                              selectedServices.add(service);
-                                            } else {
-                                              selectedServices.remove(service);
-                                            }
-                                          });
-                                        },
-                                      );
-                                    }).toList(),
-                                  ),
-                                );
-                              },
+              child: Builder(
+                builder: (BuildContext context) {
+                  if (constants.isLaptop) {
+                    // If it's on a laptop, return the Row as it is
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        const ContactHeader(),
+                        SizedBox(
+                          width: 0.16.sw,
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
+                              hintText: 'Name',
+                              hintStyle: const TextStyle(
+                                color: Colors.black,
+                              ),
+                              labelStyle: const TextStyle(
+                                color: Colors.black,
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5),
+                                borderSide: BorderSide.none,
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5),
+                                borderSide: BorderSide.none,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              disabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
                             ),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 12, horizontal: 24),
-                                  decoration: BoxDecoration(
-                                    color: Colors.black,
-                                    borderRadius: BorderRadius.circular(22),
-                                  ),
-                                  child: const Text(
-                                    'OK',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
-                          );
-                        },
-                      );
-                    },
-                  ),
-                  SizedBox(
-                    height: 50,
-                    child: Center(
-                      child: InkWell(
-                        onTap: () {},
-                        child: SizedBox(
-                          width: constants.isLaptop ? 0.08.sw : 0.8.sw,
-                          child: DecoratedBox(
+                          ),
+                        ),
+                        SizedBox(
+                          width: 0.16.sw,
+                          child: Container(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10.0),
                             decoration: BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(5.0),
+                              border: Border.all(color: Colors.grey),
                             ),
-                            child: const Padding(
-                              padding: EdgeInsets.all(15),
-                              child: Center(
-                                child: Text(
-                                  "Submit",
-                                  style: TextStyle(
-                                    color: AppColors.red,
-                                    fontWeight: FontWeight.bold,
+                            child: InternationalPhoneNumberInput(
+                              selectorConfig: const SelectorConfig(
+                                selectorType: PhoneInputSelectorType.DROPDOWN,
+                                showFlags: false,
+                                setSelectorButtonAsPrefixIcon: true,
+                              ),
+                              hintText: "WhatsApp No",
+                              initialValue: PhoneNumber(isoCode: "QA"),
+                              onInputChanged: (PhoneNumber value) {},
+                              inputDecoration: const InputDecoration(
+                                border: InputBorder.none,
+                                hintText: "WhatsApp No",
+                                hintStyle: TextStyle(color: Colors.grey),
+                                contentPadding:
+                                    EdgeInsets.symmetric(horizontal: 10.0),
+                              ),
+                              textStyle: const TextStyle(color: Colors.black),
+                              autoValidateMode:
+                                  AutovalidateMode.onUserInteraction,
+                              formatInput: false,
+                              keyboardType:
+                                  const TextInputType.numberWithOptions(
+                                signed: true,
+                                decimal: true,
+                              ),
+                            ),
+                          ),
+                        ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.circular(10), // round corners
+                            ),
+                            padding: const EdgeInsets.all(25),
+                            textStyle: const TextStyle(
+                              color: AppColors.red,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                          child: const Text('Select Service'),
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: const Text('Select Service'),
+                                  content: StatefulBuilder(
+                                    builder: (BuildContext context,
+                                        StateSetter setState) {
+                                      return SizedBox(
+                                        width: constants.isLaptop
+                                            ? 0.16.sw
+                                            : 0.8.sw,
+                                        height: 0.265.sw,
+                                        child: ListView(
+                                          children: services.map((service) {
+                                            return CheckboxListTile(
+                                              title: Text(service),
+                                              value: selectedServices
+                                                  .contains(service),
+                                              onChanged: (bool? value) {
+                                                setState(() {
+                                                  if (value == true) {
+                                                    selectedServices
+                                                        .add(service);
+                                                  } else {
+                                                    selectedServices
+                                                        .remove(service);
+                                                  }
+                                                });
+                                              },
+                                            );
+                                          }).toList(),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 12, horizontal: 24),
+                                        decoration: BoxDecoration(
+                                          color: Colors.black,
+                                          borderRadius:
+                                              BorderRadius.circular(22),
+                                        ),
+                                        child: const Text(
+                                          'OK',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                        ),
+                        SizedBox(
+                          height: 50,
+                          child: Center(
+                            child: InkWell(
+                              onTap: () {},
+                              child: SizedBox(
+                                width:
+                                    0.08.sw, // Adjust width for mobile devices
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: const Padding(
+                                    padding: EdgeInsets.all(15),
+                                    child: Center(
+                                      child: Text(
+                                        "Submit",
+                                        style: TextStyle(
+                                          color: AppColors.red,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-
-          /*     Container(
-            height: 0.70.sh,
-            width: 1.sw,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.0), color: Colors.black),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const Text(
-                  'About Company',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),
-                ),
-                const Text(
-                  'WHAT TYPE OF VEHICLE DO YOU DRIVE',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 26,
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                for (var i = 0; i < 4; i++)
-                  Row(
-                    children: [
-                      Container(
-                        height: 10,
-                        width: 0.20.sw,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(0.0),
-                          color: AppColors.red,
-                        ),
-                      ),
-                      Container(
-                        height: 40,
-                        width: 0.20.sw,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(22.0),
-                          color: AppColors.red,
-                        ),
-                        child: Center(
-                          child: Text(
-                            text[i],
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
+                      ],
+                    );
+                  } else {
+                    // If it's on a mobile device, wrap Row with SingleChildScrollView
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        const ContactHeader(),
+                        SizedBox(
+                          width: 0.6.sw, // Adjust width for mobile devices
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
+                              hintText: 'Name',
+                              hintStyle: const TextStyle(
+                                color: Colors.black,
+                              ),
+                              labelStyle: const TextStyle(
+                                color: Colors.black,
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5),
+                                borderSide: BorderSide.none,
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5),
+                                borderSide: BorderSide.none,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              disabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      const Spacer(),
-                      Container(
-                        height: 40,
-                        width: 0.20.sw,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(22.0),
-                          color: AppColors.red,
-                        ),
-                        child: Center(
-                          child: Text(
-                            text1[i],
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20),
+                        SizedBox(
+                          width: 0.8.sw, // Adjust width for mobile devices
+                          child: Container(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10.0),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5.0),
+                              border: Border.all(color: Colors.grey),
+                            ),
+                            child: InternationalPhoneNumberInput(
+                              selectorConfig: const SelectorConfig(
+                                selectorType: PhoneInputSelectorType.DROPDOWN,
+                                showFlags: false,
+                                setSelectorButtonAsPrefixIcon: true,
+                              ),
+                              hintText: "WhatsApp No",
+                              initialValue: PhoneNumber(isoCode: "QA"),
+                              onInputChanged: (PhoneNumber value) {},
+                              inputDecoration: const InputDecoration(
+                                border: InputBorder.none,
+                                hintText: "WhatsApp No",
+                                hintStyle: TextStyle(color: Colors.grey),
+                                contentPadding:
+                                    EdgeInsets.symmetric(horizontal: 10.0),
+                              ),
+                              textStyle: const TextStyle(color: Colors.black),
+                              autoValidateMode:
+                                  AutovalidateMode.onUserInteraction,
+                              formatInput: false,
+                              keyboardType:
+                                  const TextInputType.numberWithOptions(
+                                signed: true,
+                                decimal: true,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                      Container(
-                        height: 10,
-                        width: 0.20.sw,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(0.0),
-                          color: AppColors.red,
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.circular(10), // round corners
+                            ),
+                            padding: const EdgeInsets.all(25),
+                            textStyle: const TextStyle(
+                              color: AppColors.red,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                          child: const Text('Select Service'),
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: const Text('Select Service'),
+                                  content: StatefulBuilder(
+                                    builder: (BuildContext context,
+                                        StateSetter setState) {
+                                      return SizedBox(
+                                        width: constants.isLaptop
+                                            ? 0.16.sw
+                                            : 0.8.sw,
+                                        height: 0.265.sw,
+                                        child: ListView(
+                                          children: services.map((service) {
+                                            return CheckboxListTile(
+                                              title: Text(service),
+                                              value: selectedServices
+                                                  .contains(service),
+                                              onChanged: (bool? value) {
+                                                setState(() {
+                                                  if (value == true) {
+                                                    selectedServices
+                                                        .add(service);
+                                                  } else {
+                                                    selectedServices
+                                                        .remove(service);
+                                                  }
+                                                });
+                                              },
+                                            );
+                                          }).toList(),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 12, horizontal: 24),
+                                        decoration: BoxDecoration(
+                                          color: Colors.black,
+                                          borderRadius:
+                                              BorderRadius.circular(22),
+                                        ),
+                                        child: const Text(
+                                          'OK',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                );
+                              },
+                            );
+                          },
                         ),
-                      ),
-                    ],
-                  ),
-              ],
+                        SizedBox(
+                          height: 50,
+                          child: Center(
+                            child: InkWell(
+                              onTap: () {},
+                              child: SizedBox(
+                                width:
+                                    0.2.sw, // Adjust width for mobile devices
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: const Padding(
+                                    padding: EdgeInsets.all(15),
+                                    child: Center(
+                                      child: Text(
+                                        "Submit",
+                                        style: TextStyle(
+                                          color: AppColors.red,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  }
+                },
+              ),
             ),
           ),
-       */
           Container(
             height: 0.50.sh,
             width: 1.sw,
@@ -958,85 +1039,6 @@ class _ContentsPageState extends State<ContentsPage> {
               ],
             ),
           ),
-          /*  Container(
-            height: 0.75.sh,
-            width: 1.sw,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.0),
-                color: Colors.white),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 60,
-                ),
-                const Text(
-                  'Client Testonomials',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontStyle: FontStyle.italic),
-                ),
-                const Text(
-                  '100% APPROVED BY CUSTOMERS',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 26,
-                      fontStyle: FontStyle.italic),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    for (var i = 0; i < 3; i++)
-                      Container(
-                        height: 0.50.sh,
-                        width: 0.20.sw,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(17.0),
-                            color: Colors.red),
-                        child: const Column(
-                          children: [
-                            SizedBox(
-                              height: 12,
-                            ),
-                            Text(
-                              '//',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: 12,
-                            ),
-                            Text(
-                              'Lorem Ipsum Is Simply Dummy\nText Of The Printing And\nTypesetting Industry.Lorem\nIpsm Has Been The Industry\'s\nStandard Dummy Text Ever Since\nThe 1500s When an Unknown\nPrinter Took A Gallery Of Type And\nScrambled It To Make A Type\nSpecimen Book',
-                              style: TextStyle(
-                                  fontSize: 13,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: 12,
-                            ),
-                            CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                  'https://t3.ftcdn.net/jpg/05/35/47/38/360_F_535473874_OWCa2ohzXXNZgqnlzF9QETsnbrSO9pFS.jpg'),
-                            ),
-                            Text(
-                              'SATHISH',
-                              style: TextStyle(color: Colors.white),
-                            )
-                          ],
-                        ),
-                      ),
-                  ],
-                )
-              ],
-            ),
-          ),*/
           Container(
             height: 0.6.sh,
             width: 1.sw,
