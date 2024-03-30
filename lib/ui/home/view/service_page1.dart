@@ -118,74 +118,110 @@ class _ServicePageState extends State<ServicePage> {
 
                     SizedBox(
                       width: 0.9.sw,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          SizedBox(
-                            width: 0.55.sw,
-                            child: Column(
-                              children: [
-                                for (int i = 0;
-                                    i < widget.service.features.length;
-                                    i++)
-                                  ServiceFeatures(
-                                    image:
-                                        "assets/images/features/${widget.service.key}${i + 1}.png",
-                                    title: widget.service.features[i].title,
-                                    content:
-                                        widget.service.features[i].description,
-                                  ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(
-                                8.0), // Add padding around the container
-                            child: Row(
+                      child: constants.isLaptop
+                          ? Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                for (int i = 1;
-                                    i <= widget.service.imagesCount;
-                                    i++)
-                                  Container(
+                                SizedBox(
+                                  width: 0.55.sw,
+                                  child: Column(
+                                    children: [
+                                      for (int i = 0;
+                                          i < widget.service.features.length;
+                                          i++)
+                                        ServiceFeatures(
+                                          image:
+                                              "assets/images/features/${widget.service.key}${i + 1}.png",
+                                          title:
+                                              widget.service.features[i].title,
+                                          content: widget
+                                              .service.features[i].description,
+                                        ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
                                     margin: const EdgeInsets.symmetric(
-                                        horizontal:
-                                            4.0), // Add horizontal margin around each image container
+                                        horizontal: 4.0),
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(
-                                          12.0), // Increase border radius for a smoother look
+                                      borderRadius: BorderRadius.circular(12.0),
                                       boxShadow: [
                                         BoxShadow(
                                           color: const Color.fromARGB(
                                                   125, 158, 158, 158)
-                                              .withOpacity(
-                                                  0.3), // Add shadow for depth
+                                              .withOpacity(0.3),
                                           spreadRadius: 1,
                                           blurRadius: 3,
-                                          offset: const Offset(0,
-                                              2), // Offset the shadow slightly
+                                          offset: const Offset(0, 2),
                                         ),
                                       ],
                                     ),
                                     child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(
-                                          12.0), // Clip the image to match the container's border radius
+                                      borderRadius: BorderRadius.circular(12.0),
                                       child: Image.asset(
-                                        'assets/images/serviceimages/${widget.service.key}$i.png',
+                                        'assets/images/serviceimages/${widget.service.key}1.png',
                                         height: 0.70.sh,
                                         width: 0.65.sh,
                                         fit: BoxFit.fill,
                                       ),
                                     ),
                                   ),
-                                const SizedBox(
-                                    width:
-                                        8.0), // Add SizedBox for spacing between images
+                                )
+                              ],
+                            )
+                          : Column(
+                              children: [
+                                SizedBox(
+                                  width: 0.55.sw,
+                                  child: Column(
+                                    children: [
+                                      for (int i = 0;
+                                          i < widget.service.features.length;
+                                          i++)
+                                        ServiceFeatures(
+                                          image:
+                                              "assets/images/features/${widget.service.key}${i + 1}.png",
+                                          title:
+                                              widget.service.features[i].title,
+                                          content: widget
+                                              .service.features[i].description,
+                                        ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 4.0),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12.0),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: const Color.fromARGB(
+                                                  125, 158, 158, 158)
+                                              .withOpacity(0.3),
+                                          spreadRadius: 1,
+                                          blurRadius: 3,
+                                          offset: const Offset(0, 2),
+                                        ),
+                                      ],
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(12.0),
+                                      child: Image.asset(
+                                        'assets/images/serviceimages/${widget.service.key}1.png',
+                                        height: 0.40.sh,
+                                        width: 0.45.sh,
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
+                                  ),
+                                )
                               ],
                             ),
-                          )
-                        ],
-                      ),
                     ),
 
                     const SizedBox(height: 20),
