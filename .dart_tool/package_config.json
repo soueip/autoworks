@@ -92,6 +92,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "font_awesome_flutter",
+      "rootUri": "file:///C:/Users/NOVA/AppData/Local/Pub/Cache/hosted/pub.dev/font_awesome_flutter-10.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "google_fonts",
       "rootUri": "file:///C:/Users/NOVA/AppData/Local/Pub/Cache/hosted/pub.dev/google_fonts-6.2.1",
       "packageUri": "lib/",
@@ -374,7 +380,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-03-26T19:47:57.839017Z",
+  "generated": "2024-03-31T13:47:01.708052Z",
   "generator": "pub",
   "generatorVersion": "3.3.2"
 }

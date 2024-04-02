@@ -1,2 +1,15 @@
-2024/03/12-11:42:05.596 3930 Creating DB C:\Users\NOVA\AppData\Local\Temp\flutter_tools.f7efc2d8\flutter_tools_chrome_device.45f26fcd\Default\WebStorage\38\IndexedDB\indexeddb.leveldb since it was missing.
-2024/03/12-11:42:05.673 3930 Reusing MANIFEST C:\Users\NOVA\AppData\Local\Temp\flutter_tools.f7efc2d8\flutter_tools_chrome_device.45f26fcd\Default\WebStorage\38\IndexedDB\indexeddb.leveldb/MANIFEST-000001
+2024/03/31-14:46:28.149 30e8 Reusing MANIFEST C:\Users\NOVA\AppData\Local\Temp\flutter_tools.7cd34226\flutter_tools_chrome_device.6590fda8\Default\WebStorage\38\IndexedDB\indexeddb.leveldb/MANIFEST-000001
+2024/03/31-14:46:28.149 30e8 Recovering log #4
+2024/03/31-14:46:28.150 30e8 Reusing old log C:\Users\NOVA\AppData\Local\Temp\flutter_tools.7cd34226\flutter_tools_chrome_device.6590fda8\Default\WebStorage\38\IndexedDB\indexeddb.leveldb/000004.log 
+2024/03/31-14:56:30.386 30e8 Level-0 table #8: started
+2024/03/31-14:56:30.389 30e8 Level-0 table #8: 11205 bytes OK
+2024/03/31-14:56:30.391 30e8 Delete type=0 #4
+2024/03/31-14:56:30.391 30e8 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2024/03/31-14:56:30.391 30e8 Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x03\x01\x1f\x04\x03\x01\x03\x00N\x00E\x00W\x03\x00\x00\x00\x00\x00\x00L@\x03\x00`\x8e.L\xe9xB\x00\x03\x00\x00\x00\x00\x00\x00\x00@' @ 301 : 1
+2024/03/31-14:56:30.392 30e8 Compacting 1@1 + 1@2 files
+2024/03/31-14:56:30.393 30e8 Generated table #9@1: 37 keys, 977 bytes
+2024/03/31-14:56:30.393 30e8 Compacted 1@1 + 1@2 files => 977 bytes
+2024/03/31-14:56:30.396 30e8 compacted to: files[ 0 0 1 0 0 0 0 ]
+2024/03/31-14:56:30.396 30e8 Delete type=2 #5
+2024/03/31-14:56:30.396 30e8 Delete type=2 #8
+2024/03/31-14:56:30.396 30e8 Manual compaction at level-1 from '\x00\x03\x01\x1f\x04\x03\x01\x03\x00N\x00E\x00W\x03\x00\x00\x00\x00\x00\x00L@\x03\x00`\x8e.L\xe9xB\x00\x03\x00\x00\x00\x00\x00\x00\x00@' @ 301 : 1 .. (end); will stop at (end)

@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:autoworks/ui/home/widget/star.dart';
 import 'package:fluttericon/linearicons_free_icons.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 import 'package:url_launcher/url_launcher.dart';
@@ -1209,7 +1210,7 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: constants.isLaptop ? 0.50.sh : 0.6.sh,
+      height: constants.isLaptop ? 0.50.sh : 0.8.sh,
       width: 1.sw,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4.0),
@@ -1258,33 +1259,55 @@ class Footer extends StatelessWidget {
                   mainAxisAlignment: constants.isLaptop
                       ? MainAxisAlignment.start
                       : MainAxisAlignment.center,
-                  children: const [
-                    Icon(
-                      FontAwesome5.instagram,
-                      color: Colors.white,
+                  children: [
+                    InkWell(
+                      onTap: () async {
+                        const url = 'https://www.instagram.com/autoworks.qa/';
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        } else {
+                          throw 'Could not launch $url';
+                        }
+                      },
+                      child: const Icon(
+                        FontAwesome5.instagram,
+                        color: Colors.white,
+                      ),
                     ),
-                    SizedBox(width: 12),
-                    // Icon(
-                    //   FontAwesome5.youtube,
-                    //   color: Colors.white,
-                    // ),
-                    // SizedBox(
-                    //   width: 12,
-                    // ),
-                    Icon(
-                      FontAwesome5.snapchat,
-                      color: Colors.white,
+
+                    const SizedBox(width: 12),
+                    InkWell(
+                      onTap: () async {
+                        const url =
+                            'https://www.snapchat.com/add/autoworks.qa?share_id=vI2tlqj%2FQ3u9tU3KA8X+yQ&locale=en_QA&sid=514431d3b04244a8970534f430ba74ee';
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        } else {
+                          throw 'Could not launch $url';
+                        }
+                      },
+                      child: const Icon(
+                        FontAwesome5.snapchat,
+                        color: Colors.white,
+                      ),
                     ),
-                    SizedBox(width: 12),
-                    Icon(
-                      FontAwesome5.facebook,
-                      color: Colors.white,
+
+                    const SizedBox(width: 12),
+                    InkWell(
+                      onTap: () async {
+                        const url = 'https://www.facebook.com/autoworks.qa';
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        } else {
+                          throw 'Could not launch $url';
+                        }
+                      },
+                      child: const Icon(
+                        FontAwesome5.facebook,
+                        color: Colors.white,
+                      ),
                     ),
-                    SizedBox(width: 12),
-                    Icon(
-                      FontAwesome5.linkedin,
-                      color: Colors.white,
-                    ),
+
                     // Icon(
                     //   FontAwesome5.twitter,
                     //   color: Colors.white,
@@ -1423,21 +1446,36 @@ class Footer extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 12),
-                const Row(
+                Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.email,
                       color: Colors.white,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 12,
                     ),
-                    Text(
-                      'info@autoworksqa.com',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16,
+                    InkWell(
+                      onTap: () async {
+                        final Uri _emailLaunchUri = Uri(
+                          scheme: 'mailto',
+                          path: 'info@autoworksqa.com',
+                        );
+                        final String _emailLaunchUriString =
+                            _emailLaunchUri.toString();
+                        if (await canLaunch(_emailLaunchUriString)) {
+                          await launch(_emailLaunchUriString);
+                        } else {
+                          throw 'Could not launch $_emailLaunchUriString';
+                        }
+                      },
+                      child: const Text(
+                        'info@autoworksqa.com',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                        ),
                       ),
                     ),
                   ],
@@ -1467,7 +1505,71 @@ class Footer extends StatelessWidget {
                       ),
                     ],
                   ),
-                )
+                ),
+                const SizedBox(height: 12),
+                Column(
+                  children: [
+                    InkWell(
+                      onTap: () async {
+                        const url = 'https://www.instagram.com/autoworks.qa/';
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        } else {
+                          throw 'Could not launch $url';
+                        }
+                      },
+                      child: const Row(
+                        children: [
+                          Icon(
+                            FontAwesomeIcons.instagram,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                          SizedBox(width: 12),
+                          Text(
+                            'autoworks.qa',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    InkWell(
+                      onTap: () async {
+                        const url =
+                            'https://www.snapchat.com/add/autoworks.qa?share_id=vI2tlqj%2FQ3u9tU3KA8X+yQ&locale=en_QA&sid=514431d3b04244a8970534f430ba74ee'; // Replace 'SNAPCHAT_URL_HERE' with your Snapchat URL
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        } else {
+                          throw 'Could not launch $url';
+                        }
+                      },
+                      child: const Row(
+                        children: [
+                          Icon(
+                            FontAwesomeIcons.snapchat,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                          SizedBox(width: 12),
+                          Text(
+                            'Autoworks.qa',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 12,
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           )
